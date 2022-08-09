@@ -26,7 +26,7 @@ app.use(cors());
 //Cloud-Atlas
 
 //Setting up the connection URL/ Link to the database ! 
-const CONNECTION_URL = "mongodb+srv://rht_atlas:oyZTjFn2WHk41eBg@cluster0.fs0hth0.mongodb.net/?retryWrites=true&w=majority"; 
+//addtheconnectionurlhere
 
 //Defining the PORT, where to host the server !
 const PORT = process.env.PORT || 5000;
