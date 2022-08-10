@@ -27,6 +27,8 @@ app.use(cors());
 
 //Setting up the connection URL/ Link to the database ! 
 //addtheconnectionurlhere
+// const CONNECTION_URL = process.env.ENV_CONNECTION_URL;
+const CONNECTION_URL = "mongodb+srv://rht_atlas:oyZTjFn2WHk41eBg@mern-basic-social-media.hig7zws.mongodb.net/?retryWrites=true&w=majority";
 
 //Defining the PORT, where to host the server !
 const PORT = process.env.PORT || 5000;
