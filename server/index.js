@@ -14,13 +14,13 @@ import postRoutes from './routes/posts.js';
 
 const app = express(); 
 
-//Using express middleware for connecting the routes
-//If url = http://localhost:5000/posts sending it to postRoutes
-app.use('/posts', postRoutes); 
-
 app.use(bodyParser.json({ limit: "30mb", extended: true })); 
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true })); 
 app.use(cors()); 
+
+//Using express middleware for connecting the routes
+//If url = http://localhost:5000/posts sending it to postRoutes
+app.use('/posts', postRoutes); 
 
 //Connecting to database 
 //Cloud-Atlas
