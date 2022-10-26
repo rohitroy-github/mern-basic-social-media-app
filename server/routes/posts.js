@@ -1,17 +1,23 @@
-import express from 'express'; 
+import express from "express";
 
-const router = express.Router(); 
+import {
+  getPosts,
+  getPost,
+  createPost,
+  updatePost,
+  likePost,
+  deletePost,
+} from "../controllers/posts.js";
 
-import { getPosts, createPost } from '../controllers/posts.js';
+const router = express.Router();
 
-//Routes
+router.get("/", getPosts);
+router.post("/", createPost);
+router.get("/:id", getPost);
+router.patch("/:id", updatePost);
+router.delete("/:id", deletePost);
 
-//GET route 
-router.get('/', getPosts); 
+// patch is used for updating data
+router.patch("/:id/likePost", likePost);
 
-//POST route
-router.post('/', createPost); 
-
-
-export default router; 
-
+export default router;
