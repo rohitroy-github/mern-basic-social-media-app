@@ -16,7 +16,11 @@ app.use(cors());
 
 app.use("/posts", postRoutes);
 
-const PORT = process.env.PORT;
+app.get("/", (req, res) => {
+  res.send("This is a basic-social-media-app API created by Rohit Roy !");
+});
+
+const PORT = process.env.PORT || 5000;
 
 mongoose
   .connect(process.env.CONNECTION_URL, {
