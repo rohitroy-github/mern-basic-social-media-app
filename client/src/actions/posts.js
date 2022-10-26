@@ -1,39 +1,59 @@
-import * as api from "../api";
+import {
+  FETCH_ALL,
+  CREATE,
+  UPDATE,
+  DELETE,
+  LIKE,
+} from "../constants/actionTypes";
 
-// ActionCreators > functions that return actions
+import * as api from "../api/index.js";
+
 export const getPosts = () => async (dispatch) => {
   try {
-    //Fetching all the data from the api
     const { data } = await api.fetchPosts();
 
-    // action > is an object having a type and a payload
-    const action = { type: "FETCH_ALL", payload: data };
-    dispatch(action);
-  } 
-  catch (error) { 
-    console.log(error.message); 
+    dispatch({ type: FETCH_ALL, payload: data });
+  } catch (error) {
+    console.log(error.message);
   }
 };
 
-//Action to create post
-export const createPost = (post) => async (dispatch) => { 
-  try { 
-    const {data} = await api.createPost(post); 
+export const createPost = (post) => async (dispatch) => {
+  try {
+    const { data } = await api.createPost(post);
 
-    dispatch({ type: 'CREATE', payload: data}); 
+    dispatch({ type: CREATE, payload: data });
+  } catch (error) {
+    console.log(error.message);
   }
-  catch (error) { 
-    console.log(error); 
-   }
-}
+};
 
-//Action to update post 
-// export const updatePost = (id, post) => async (dispatch) => {
-//   try {
-//     const { data } = await api.updatePost(id, post);
+export const updatePost = (id, post) => async (dispatch) => {
+  try {
+    const { data } = await api.updatePost(id, post);
 
-//     dispatch({ type: UPDATE, payload: data });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
+    dispatch({ type: UPDATE, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const likePost = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.likePost(id);
+
+    dispatch({ type: LIKE, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const deletePost = (id) => async (dispatch) => {
+  try {
+    await api.deletePost(id);
+
+    dispatch({ type: DELETE, payload: id });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
